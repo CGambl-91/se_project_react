@@ -1,0 +1,18 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__author {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.footer__date {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  margin: 0;
+}

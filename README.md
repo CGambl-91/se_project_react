@@ -1,9 +1,18 @@
 # WTWR (What to Wear?)
 
-## About the project
+## Description
 
-The idea of the application is pretty simple - we make a call to an API, which then responds with the daily weather forecast. We collect the weather data, process it, and then based on the forecast, we recommend suitable clothing to the user.
+WTWR is a responsive React application that uses current weather data to recommend clothing appropriate for the temperature. The application retrieves weather information from the OpenWeather API and filters clothing cards based on whether the current weather is hot, warm, or cold. Users can also open clothing cards to view a larger preview and access a form for adding new garments.
 
-## Links
+## Technologies
 
-- [Figma Design](https://www.figma.com/file/DTojSwldenF9UPKQZd6RRb/Sprint-10%3A-WTWR)
+- React
+- JavaScript
+- JSX
+- CSS
+- Vite
+- OpenWeather API
+- React Hooks
+- REST API requests
+- Responsive web design
+- BEM methodology
