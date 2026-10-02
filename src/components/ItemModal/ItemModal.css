@@ -1,12 +1,11 @@
-.modal__content_type_image {
+.modal__content.modal__content_type_image {
   max-width: 498px;
   padding: 0;
   overflow: hidden;
 }
 
-.modal__close_type_image {
+.modal__close.modal__close_type_image {
   background-image: url(../../assets/close-btn-white.svg);
-  background-color: transparent;
 }
 
 .modal__image {
@@ -14,7 +13,24 @@
 }
 
 .modal__footer {
+  display: flex;
+  justify-content: space-between;
   padding: 20px 32px 32px;
+}
+
+.modal__delete-button {
+  border: none;
+  background-color: white;
+  color: #ff4d00;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.modal__delete-button:hover {
+  cursor: pointer;
 }
 
 .modal__caption {

@@ -16,3 +16,10 @@ WTWR is a responsive React application that uses current weather data to recomme
 - REST API requests
 - Responsive web design
 - BEM methodology
+
+## Project Pitch Videos
+
+Check out this video, where I describe my project
+and some challenges I faced while building it:
+
+- [WTWR Stage 1: API Implementation](https://www.loom.com/share/8e51a20363d14b9c89c53454c653ec7a)
