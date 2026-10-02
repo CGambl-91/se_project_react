@@ -24,10 +24,10 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
-  const [currentTemperatureUnit, setcurrentTemperatureUnit] = useState("F");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleSwitchChange = () => {
-    setcurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
 
   const handleCardClick = (card) => {
@@ -51,7 +51,7 @@ function App() {
     };
     addItem(newCardData)
       .then((data) => {
-        setClothingItems([data, ...clothingItems]);
+        setClothingItems((prev) => [data, ...prev]);
         handleReset();
         closeActiveModal();
       })
@@ -76,8 +76,9 @@ function App() {
   const deleteItem = (itemId) => {
     removeItem(itemId)
       .then(() => {
-        setClothingItems(clothingItems.filter((item) => item._id !== itemId));
-        closeActiveModal();
+        setClothingItems((prev) =>
+          prev.filter((item) => item._id !== selectedCard._id),
+        );
       })
       .catch(console.error);
   };
