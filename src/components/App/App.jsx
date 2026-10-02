@@ -25,6 +25,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -43,19 +44,40 @@ function App() {
     setActiveModal("");
   };
 
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
   const onAddItem = (inputValues, handleReset) => {
     const newCardData = {
       name: inputValues.name,
       imageUrl: inputValues.imageUrl,
       weather: inputValues.weather,
     };
+
+    setIsLoading(true);
+
     addItem(newCardData)
       .then((data) => {
         setClothingItems((prev) => [data, ...prev]);
         handleReset();
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
@@ -76,6 +98,7 @@ function App() {
   const deleteItem = (itemId) => {
     removeItem(itemId)
       .then(() => {
+        closeActiveModal();
         setClothingItems((prev) =>
           prev.filter((item) => item._id !== selectedCard._id),
         );
@@ -119,6 +142,7 @@ function App() {
           onCloseModal={closeActiveModal}
           isOpen={activeModal === "add-garment"}
           onAddItem={onAddItem}
+          isLoading={isLoading}
         />
         <ItemModal
           isOpen={activeModal === "preview"}

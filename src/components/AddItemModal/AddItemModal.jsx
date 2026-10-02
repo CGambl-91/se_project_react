@@ -2,7 +2,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 import { useEffect } from "react";
 
-const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
+const AddItemModal = ({ isOpen, onAddItem, onCloseModal, isLoading }) => {
   const defaultValues = { name: "", imageUrl: "", weather: "" };
   const { values, handleChange, setValues } = useForm(defaultValues);
 
@@ -32,6 +32,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
       onSubmit={handleSubmit}
       isOpen={isOpen}
       isFormValid={isFormValid}
+      buttonText={isLoading ? "Saving..." : "Add garment"}
     >
       <label htmlFor="name" className="modal__label">
         Name{" "}
